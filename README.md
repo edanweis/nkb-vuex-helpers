@@ -4,7 +4,7 @@ This is a library adapted and expanded from Vuex Intern by Nick Baroni for perso
 
 ## Install
 
-`npm install nkb-vuex-helpers`
+`npm install --save-dev nkb-vuex-helpers`
 
 ## Example State
 
