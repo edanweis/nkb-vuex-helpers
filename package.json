@@ -1,5 +1,5 @@
 {
-  "name": "vuex-helpers",
+  "name": "nkb-vuex-helpers",
   "version": "1.0.0",
   "description": "Helper functions for reducing code in writing Vuex mutations and getters. Adapted for personal use from vuex-intern by Nick Baroni",
   "main": "./dist/index.js",
@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/nkboothroyd/nkb-vuex-helpers"
   },
   "keywords": [
     "javascript",

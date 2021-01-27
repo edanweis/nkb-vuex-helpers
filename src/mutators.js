@@ -43,7 +43,7 @@ export const decrement = key => (state, iterator = 1) => {
 }
 
 // Push an item onto a list
-// addSkill('skills')
+// addSkill: pushTo('skills')
 // commit('addskill', ['dagger'])
 export const pushTo = key => (state, value) => {
   state[key].push(value)
