@@ -1,0 +1,8 @@
+# Common
+dist
+node_modules
+*.log
+**/.DS_Store
+Thumbs.db
+.cache
+.dat

@@ -1,0 +1,30 @@
+{
+  "name": "vuex-helpers",
+  "version": "1.0.0",
+  "description": "Helper functions for reducing code in writing Vuex mutations and getters. Adapted for personal use from vuex-intern by Nick Baroni",
+  "main": "./dist/index.js",
+  "module": "./src/index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "jest",
+    "build": "rollup src/index.js --file dist/index.js --format cjs",
+    "prepublish": "npm run build && npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [
+    "javascript",
+    "vue",
+    "vuex"
+  ],
+  "author": "Noah Boothroyd & Nick Baroni",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^26.6.3",
+    "rollup": "^2.38.0"
+  }
+}
