@@ -1,7 +1,8 @@
 const {
   getter,
   getByKey,
-  filterbyKey
+  filterbyKey,
+  dayTimeFormatter
 } = require('../../dist')
 // import { getter, getByKey, filterbyKey } from '@/store/helpers/getters.js'
 
@@ -60,5 +61,26 @@ describe('filterByKey', () => {
     const state = { users, session: { characters } }
     expect(filterbyKey('users', 'name')(state)('Noah')).toEqual(state.users.slice(0, 2))
     expect(filterbyKey(['session', 'characters'], 'class')(state)('paladin')).toEqual(state.session.characters.slice(2, 4))
+  })
+})
+
+describe('dayTimeFormatter', () => {
+  const stateAM = { time: 36500 }
+  const statePM = { time: 79600 }
+  it('returns a 24 hour timestamp', () => {
+    let formattedTime = dayTimeFormatter('time')(statePM, 24)
+    expect(formattedTime).toBe('22:06:40')
+  })
+  it('returns a 12 hour AM timestamp', () => {
+    let formattedTime = dayTimeFormatter('time')(stateAM, 12)
+    expect(formattedTime).toBe('10:08:20 AM')
+  })
+  it('returns a 12 hour PM timestamp without seconds', () => {
+    let formattedTime = dayTimeFormatter('time')(statePM, 12, false)
+    expect(formattedTime).toBe('10:06 PM')
+  })
+  it('24 clock parameter as numeric string', () => {
+    let formattedTime = dayTimeFormatter('time')(statePM, '24')
+    expect(formattedTime).toBe('22:06:40')
   })
 })

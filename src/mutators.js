@@ -32,14 +32,24 @@ export const assignObject = data => state => {
 // incSTR: increment('strength')
 // commit('incSTR')
 export const increment = key => (state, iterator = 1) => {
-  state[key] += iterator
+  if (typeof(state[key]) === 'number') {
+    let i = typeof iterator === 'number' ? iterator : parseInt(iterator, 10)
+    state[key] += i
+  } else {
+    throw new Error(`State ${state[key]} is not a number.`)
+  }
 }
 
 // Decrement a number value in a state by an iterator
 // decSTR: decrement('strength')
 // commit('decSTR')
 export const decrement = key => (state, iterator = 1) => {
-  state[key] -= iterator
+  if (typeof(state[key]) === 'number') {
+    let i = typeof iterator === 'number' ? iterator : parseInt(iterator, 10)
+    state[key] -= i
+  } else {
+    throw new Error(`State ${state[key]} is not a number.`)
+  }
 }
 
 // Push an item onto a list

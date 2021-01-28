@@ -1,6 +1,6 @@
 {
   "name": "nkb-vuex-helpers",
-  "version": "1.0.0",
+  "version": "0.2.0",
   "description": "Helper functions for reducing code in writing Vuex mutations and getters. Adapted for personal use from vuex-intern by Nick Baroni",
   "main": "./dist/index.js",
   "module": "./src/index.js",

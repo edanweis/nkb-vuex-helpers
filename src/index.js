@@ -12,4 +12,9 @@ export {
   removeRecordInList,
   toggle
 } from './mutators'
-export { getter, getByKey, filterbyKey } from './getters'
+export { 
+  getter,
+  getByKey,
+  filterbyKey,
+  dayTimeFormatter
+} from './getters'
