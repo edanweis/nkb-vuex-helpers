@@ -98,6 +98,31 @@ export default {
 }
 ```
 
+### dayTimeFormatter
+
+`dayTimeFormatter` takes a state value in seconds (up to a max of 24 hours/86400s) and formats it into a readable timestamp. Parameters include a choice in 12 or 24 hour clock types (default is 24), and a boolean option to show or hide the seconds part of the timestamp (default is true). 12 or 24 clock types can be set as integers (12, 24) or strings ('12', '24'), but the state put through the function MUST be an integer.
+
+```javascript
+// Store/module file
+import { dayTimeFormatter } from 'nkb-vuex-helpers'
+
+const getters = {
+  showPostTime: dayTimeFormatter('postTime')
+}
+
+// Use with mapGetters
+import { mapGetters } from 'vuex'
+export default {
+  computed: {
+    ...mapGetters([
+      'showPostTime'
+    ]),
+    blogPostTime: this.showPostTime(12, false), // Formats to '00:00' with AM or PM appended if hour count > 12
+    blogPost24Time: this.showPostTime() // Formats to '00:00:00' with 24 hour clock type
+  }
+}
+```
+
 ## Mutators
 
 ### set
