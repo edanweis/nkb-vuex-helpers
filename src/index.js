@@ -1,5 +1,5 @@
 // Mutator and Getter functions
-export { 
+export {
   set,
   setState,
   setPath,
@@ -10,11 +10,13 @@ export {
   extendRecordInList,
   replaceRecordInList,
   removeRecordInList,
-  toggle
+  toggle,
 } from './mutators'
-export { 
+export {
   getter,
   getByKey,
   filterbyKey,
-  dayTimeFormatter
+  filterNil,
+  getCase,
+  dayTimeFormatter,
 } from './getters'

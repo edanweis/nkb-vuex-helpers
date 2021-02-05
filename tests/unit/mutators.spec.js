@@ -7,26 +7,26 @@ const {
   extendRecordInList,
   replaceRecordInList,
   removeRecordInList,
-  toggle
+  toggle,
 } = require('../../dist')
 // import { set, assignObject, increment, decrement, pushTo, extendRecordInList, replaceRecordInList, removeRecordInList, toggle } from '@/store/helpers/mutators.js'
 
 const characters = [
   {
     id: 1,
-    class: "sorcerer",
+    class: 'sorcerer',
   },
   {
     id: 2,
-    class: "barbarian",
+    class: 'barbarian',
   },
   {
     id: 3,
-    class: "paladin",
+    class: 'paladin',
   },
   {
     id: 4,
-    class: "paladin",
+    class: 'paladin',
   },
 ]
 
@@ -87,7 +87,9 @@ describe('decrement', () => {
 
 describe('pushTo', () => {
   it('pushes an item onto an array', () => {
-    const state = { spells: ['magic missile', 'chromatic orb', 'burning hands'] }
+    const state = {
+      spells: ['magic missile', 'chromatic orb', 'burning hands'],
+    }
     const spell = 'identify'
     pushTo('spells')(state, spell)
     expect(state.spells[3]).toBe(spell)

@@ -15,11 +15,11 @@ const state = {
     { id: 2, class: 'fighter' },
     { id: 3, class: 'fighter' },
     { id: 4, class: 'cleric' },
-    { id: 5, class: 'thief' }
+    { id: 5, class: 'thief' },
   ],
-  weapons: ['dagger', 'crossbow', 'quarter staff']
+  weapons: ['dagger', 'crossbow', 'quarter staff'],
   level: 1,
-  prestige: false
+  prestige: false,
 }
 ```
 
@@ -34,18 +34,16 @@ The most basic possible getter:
 import { getter } from 'nkb-vuex-helpers'
 
 const getters = {
-  getLevel: getter('level')
+  getLevel: getter('level'),
 }
 
 // Use with mapGetters
 import { mapGetters } from 'vuex'
 export default {
   computed: {
-    ...mapGetters([
-      'getLevel'
-    ]),
-    level: this.getLevel()
-  }
+    ...mapGetters(['getLevel']),
+    level: this.getLevel(),
+  },
 }
 ```
 
@@ -83,18 +81,62 @@ export default {
 import { filterByKey } from 'nkb-vuex-helpers'
 
 const getters = {
-  filterByClass: filterByKey('characters', 'class')
+  filterByClass: filterByKey('characters', 'class'),
 }
 
 // Use with mapGetters
 import { mapGetters } from 'vuex'
 export default {
   computed: {
-    ...mapGetters([
-      'filterByClass'
-    ]),
-    fighters: this.filterByClass('fighter')
-  }
+    ...mapGetters(['filterByClass']),
+    fighters: this.filterByClass('fighter'),
+  },
+}
+```
+
+### filterNil
+
+`filterNil` filters object lists of all null and undefined key-value pairs (Pairs with a value of false are unaffected). This function works on nested objects and array objects, maintaining their structure while removing undefined or null entries.
+
+```javascript
+// Store/module file
+import { filterNil } from 'nkb-vuex-helpers'
+
+const getters = {
+  getValidUsers: filterNil('users'),
+}
+
+// Use with mapGetters
+import { mapGetters } from 'vuex'
+export default {
+  computed: {
+    ...mapGetters(['getValidUsers']),
+    validUsers: this.getValidUsers(),
+  },
+}
+```
+
+### getCase
+
+`getCase` takes a string value of a state's property and forces it to either upper or lower case, depending on parameter chosen. It turns non-string values into strings, so bear that in mind. By default it transforms the string into uppercase.
+
+```javascript
+// Store/module file
+import { getCase } from 'nkb-vuex-helpers'
+
+const getters = {
+  getUpperName: getCase('name', 'upper'),
+  getLowerName: getCase('name', 'lower'),
+}
+
+// Use with mapGetters
+import { mapGetters } from 'vuex'
+export default {
+  computed: {
+    ...mapGetters(['getUpperName']),
+    getUpperName: this.getUpperName(),
+    getLowerName: this.getLowerName(),
+  },
 }
 ```
 
@@ -107,19 +149,17 @@ export default {
 import { dayTimeFormatter } from 'nkb-vuex-helpers'
 
 const getters = {
-  showPostTime: dayTimeFormatter('postTime')
+  showPostTime: dayTimeFormatter('postTime'),
 }
 
 // Use with mapGetters
 import { mapGetters } from 'vuex'
 export default {
   computed: {
-    ...mapGetters([
-      'showPostTime'
-    ]),
+    ...mapGetters(['showPostTime']),
     blogPostTime: this.showPostTime(12, false), // Formats to '00:00' with AM or PM appended if hour count > 12
-    blogPost24Time: this.showPostTime() // Formats to '00:00:00' with 24 hour clock type
-  }
+    blogPost24Time: this.showPostTime(), // Formats to '00:00:00' with 24 hour clock type
+  },
 }
 ```
 
@@ -135,7 +175,7 @@ import { set } from 'nkb-vuex-helpers'
 
 const mutations = {
   setClass: set(['character', 0, 'class']), // Uses setPath. If the paths did not exist in the state above, setPath would create them
-  setLevel: set('level') // uses setState to set the level
+  setLevel: set('level'), // uses setState to set the level
 }
 
 // Use for actions:
@@ -152,7 +192,7 @@ commit('setLevel', 5)
 import { assignObject } from 'nkb-vuex-helpers'
 
 const mutations = {
-  resetChars: assignObject(defaultCharacters)
+  resetChars: assignObject(defaultCharacters),
 }
 
 // Use
@@ -168,7 +208,7 @@ commit('resetChars')
 import { increment } from 'nkb-vuex-helpers'
 
 const mutations = {
-  incLevel: increment('level')
+  incLevel: increment('level'),
 }
 
 // Use
@@ -185,7 +225,7 @@ commit('incLevel', 5) // Increments level by 5
 import { decrement } from 'nkb-vuex-helpers'
 
 const mutations = {
-  decLevel: decrement('level')
+  decLevel: decrement('level'),
 }
 
 // Use
@@ -202,7 +242,7 @@ commit('decLevel', 5) // Decrements level by 5
 import { pushTo } from 'nkb-vuex-helpers'
 
 const mutations = {
-  pushWeapon: pushTo('weapons')
+  pushWeapon: pushTo('weapons'),
 }
 
 // Use
@@ -219,7 +259,7 @@ commit('pushWeapon', ['dart', 'sling'])
 import { extendRecordInList } from 'nkb-vuex-helpers'
 
 const mutations = {
-  addCharacter: extendRecordInList('characters', 'id')
+  addCharacter: extendRecordInList('characters', 'id'),
 }
 
 // Use
@@ -239,7 +279,7 @@ commit('addCharacter', { id: 6, class: 'ranger' })
 import { replaceRecordInList } from 'nkb-vuex-helpers'
 
 const mutations = {
-  addCharacter: extendRecordInList('characters', 'id')
+  addCharacter: extendRecordInList('characters', 'id'),
 }
 
 // Use
@@ -279,7 +319,7 @@ commit('removeCharacters', [2, 3])
 import { toggle } from 'nkb-vuex-helpers'
 
 const mutations = {
-  togglePrestige: toggle('prestige')
+  togglePrestige: toggle('prestige'),
 }
 
 // Use

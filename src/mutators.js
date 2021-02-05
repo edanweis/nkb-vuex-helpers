@@ -4,7 +4,7 @@
 import traversePath from './helpers/traversePath'
 
 // Abstraction over setState and setPath
-export const set = key => Array.isArray(key) ? setPath(key) : setState(key)
+export const set = key => (Array.isArray(key) ? setPath(key) : setState(key))
 
 // Sets a property on a state
 // setSTR: set('strength')
@@ -32,7 +32,7 @@ export const assignObject = data => state => {
 // incSTR: increment('strength')
 // commit('incSTR')
 export const increment = key => (state, iterator = 1) => {
-  if (typeof(state[key]) === 'number') {
+  if (typeof state[key] === 'number') {
     let i = typeof iterator === 'number' ? iterator : parseInt(iterator, 10)
     state[key] += i
   } else {
@@ -44,7 +44,7 @@ export const increment = key => (state, iterator = 1) => {
 // decSTR: decrement('strength')
 // commit('decSTR')
 export const decrement = key => (state, iterator = 1) => {
-  if (typeof(state[key]) === 'number') {
+  if (typeof state[key] === 'number') {
     let i = typeof iterator === 'number' ? iterator : parseInt(iterator, 10)
     state[key] -= i
   } else {
@@ -62,17 +62,25 @@ export const pushTo = key => (state, value) => {
 // add or extend a record in a list
 // extCharByID: ('characters', 'id')
 // commit('extCharByID', payload)
-export const extendRecordInList = (key, targetKey = 'id', valueKey) => (state, data) => {
+export const extendRecordInList = (key, targetKey = 'id', valueKey) => (
+  state,
+  data
+) => {
   const id = data[targetKey]
   const value = valueKey ? data[valueKey] : data
   const index = state[key].findIndex(element => element[targetKey] === id)
-  return index < 0 ? state[key].push(value) : state[key].splice(index, 1, Object.assign({}, state[key][index], value))
+  return index < 0
+    ? state[key].push(value)
+    : state[key].splice(index, 1, Object.assign({}, state[key][index], value))
 }
 
 // add or replace a record in a list
 // repCharByID('characters', 'id')
 // commit('repCharByID', payload)
-export const replaceRecordInList = (key, targetKey = 'id', valueKey) => (state, data) => {
+export const replaceRecordInList = (key, targetKey = 'id', valueKey) => (
+  state,
+  data
+) => {
   const id = data[targetKey]
   const value = valueKey ? data[valueKey] : data
   const index = state[key].findIndex(element => element[targetKey] === id)
@@ -86,7 +94,11 @@ export const replaceRecordInList = (key, targetKey = 'id', valueKey) => (state, 
 // commit('removeCharactersByID', 21)
 export const removeRecordInList = (key, targetKey) => (state, items) => {
   if (!Array.isArray(items)) items = [items]
-  state[key] = state[key].filter(item => targetKey ? !items.some(element => element === item[targetKey]) : !items.includes(item))
+  state[key] = state[key].filter(item =>
+    targetKey
+      ? !items.some(element => element === item[targetKey])
+      : !items.includes(item)
+  )
 }
 
 // Toggle boolean in a state
@@ -95,4 +107,3 @@ export const removeRecordInList = (key, targetKey) => (state, items) => {
 export const toggle = key => state => {
   state[key] = !state[key]
 }
-
