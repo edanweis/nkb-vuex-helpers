@@ -3,6 +3,7 @@ module.exports = {
   extends: ['eslint:recommended', 'prettier'],
   parserOptions: {
     sourceType: 'module',
+    ecmaVersion: 2018,
   },
   plugins: ['jest'],
   env: {
@@ -10,5 +11,8 @@ module.exports = {
     browser: true,
     node: true,
     jest: true,
+  },
+  rules: {
+    'no-unused-vars': [2, { args: 'after-used', argsIgnorePattern: '^_' }],
   },
 }

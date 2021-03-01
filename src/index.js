@@ -1,22 +1,22 @@
-// Mutator and Getter functions
-export {
-  set,
-  setState,
-  setPath,
-  assignObject,
-  increment,
-  decrement,
-  pushTo,
-  extendRecordInList,
-  replaceRecordInList,
-  removeRecordInList,
-  toggle,
-} from './mutators'
-export {
-  getter,
-  getByKey,
-  filterbyKey,
-  filterNil,
-  getCase,
-  dayTimeFormatter,
-} from './getters'
+// Mutator Functions
+export { assignObject } from './mutators/assignObject'
+export { chunk } from './mutators/chunk'
+export { decrement } from './mutators/decrement'
+export { extendRecordInList } from './mutators/extendRecordInList'
+export { increment } from './mutators/increment'
+export { pushTo } from './mutators/pushTo'
+export { removeRecordInList } from './mutators/removeRecordInList'
+export { replaceRecordInList } from './mutators/replaceRecordInList'
+export { set, setPath, setState } from './mutators/set'
+export { toCase } from './mutators/toCase'
+export { toggle } from './mutators/toggle'
+
+// Getter Functions
+export { dayTimeFormatter } from './getters/dayTimeFormatter'
+export { filterbyKey } from './getters/filterByKey'
+export { filterNil } from './getters/filterNil'
+export { getByKey } from './getters/getByKey'
+export { getCase } from './getters/getCase'
+export { getChunk } from './getters/getChunk'
+export { getter } from './getters/getter'
+export { getMin, getMax } from './getters/getMinMax'

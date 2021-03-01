@@ -1,9 +1,9 @@
 /**
  * @function traversePath
- * 
- * @param {*} state 
- * @param {Array} path 
- * @param {boolean} createPathObjects 
+ *
+ * @param {*} state
+ * @param {Array} path
+ * @param {boolean} createPathObjects
  * @example
  *  const obj = traversePath(state, path, true)
  */
